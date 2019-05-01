@@ -1,8 +1,15 @@
 <template>
   <div>
+    </br>
     <div class='ui centered card'>
-      <p>Completed Tasks: {{ todos.filter(todo => {return todo.done === true}).length}}</p>
-      <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
+      <div class='content'>
+      <div class='header'>
+          <p>Completed Tasks: {{ todos.filter(todo => {return todo.done === true}).length}}</p>
+        </div>
+        <div class='header'>
+          <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
+        </div>
+      </div>
     </div>
     <todo v-on:delete-todo="deleteTodo" v-for="todo in todos" v-bind:todo="todo" v-on:complete-todo="completeTodo(todo)" />
   </div>

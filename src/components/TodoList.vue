@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <todo v-on:delete-todo="deleteTodo" v-for="todo in todos" v-bind:todo="todo" v-on:complete-todo="completeTodo(todo)" />
+    <todo v-on:delete-todo="deleteTodo" v-for="todo in todos" v-bind:todo="todo" v-on:complete-todo="completeTodo(todo)" v-on:reverse-todo='reverseTodo(todo)' />
   </div>
 </template>
 
@@ -29,9 +29,12 @@ export default {
       this.todos.splice(todoIndex, 1);
     },
     completeTodo(todo) {
-      console.log("h")
       const todoIndex = this.todos.indexOf(todo);
       this.todos[todoIndex].done = true;
+    },
+    reverseTodo(todo) {
+      const todoIndex = this.todos.indexOf(todo);
+      this.todos[todoIndex].done = false
     }
   }
 }

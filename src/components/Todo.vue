@@ -33,11 +33,11 @@
             </div>
         </div>
     </div>
-    <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" disabled>
+    <div class='ui bottom attached green basic button' v-show="!isEditing && todo.done" disabled>      
         Completed
     </div>
-    <div class='ui bottom attached red basic button' v-show="!todo.done  && !isEditing">
-        Complete
+    <div class='ui bottom attached red basic button' v-show="!todo.done  && !isEditing" v-on:click="completeTodo">
+        Pending
     </div>
 </div>
 </template>
@@ -60,6 +60,9 @@
             deleteTodo(todo) {
                 this.$emit('delete-todo', todo);
             },
+            completeTodo(todo) {
+                this.$emit('complete-todo', todo)
+            }
         }
     };
 </script>

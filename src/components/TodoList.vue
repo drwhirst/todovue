@@ -1,8 +1,10 @@
 <template>
   <div>
-    <p>Completed Tasks: {{ todos.filter(todo => {return todo.done === true}).length}}</p>
-    <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
-    <todo v-on:delete-todo="deleteTodo" v-for="todo in todos" v-bind:todo="todo"/>
+    <div class='ui centered card'>
+      <p>Completed Tasks: {{ todos.filter(todo => {return todo.done === true}).length}}</p>
+      <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
+    </div>
+    <todo v-on:delete-todo="deleteTodo" v-for="todo in todos" v-bind:todo="todo" v-on:complete-todo="completeTodo(todo)" />
   </div>
 </template>
 
@@ -18,6 +20,11 @@ export default {
     deleteTodo(todo) {
       const todoIndex = this.todos.indexOf(todo);
       this.todos.splice(todoIndex, 1);
+    },
+    completeTodo(todo) {
+      console.log("h")
+      const todoIndex = this.todos.indexOf(todo);
+      this.todos[todoIndex].done = true;
     }
   }
 }
